@@ -1,0 +1,21 @@
+
+let LoginEvents = datatable(
+    TimeGenerated:datetime,
+    Account:string,
+    IPAddress:string,
+    EventID:int
+)
+[
+    datetime(2026-11-17 10:00:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:01:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:02:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:03:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:04:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:05:00), "admin", "192.0.2.10", 4625
+];
+LoginEvents
+| where EventID == 4625
+| summarize FailedAttempts = count()
+    by Account, IPAddress
+| where FailedAttempts >= 5
+| order by FailedAttempts desc
