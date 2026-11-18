@@ -54,10 +54,6 @@ Fhariyazunnisa Abdul
 ### 4. Successful Login Correlation
 ![Successful Login Correlation](04-Sentinel-Successful-Login-Detection.png)
 
-## KQL Detection Queries
-- [Brute-Force Detection](KQL-Queries/Brute-Force-Detection.kql)
-- [Successful Login Correlation](KQL-Queries/Successful-Login-Correlation.kql)
-## KQL Detection Queries
 
 ### Brute-Force Detection
 [View Brute-Force Detection Query](KQL-Queries/Brute-Force-Detection.kql)
