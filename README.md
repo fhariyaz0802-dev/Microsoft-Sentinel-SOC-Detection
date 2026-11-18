@@ -25,8 +25,7 @@ Six failed login attempts targeted the `admin` account from IP address `192.0.2.
 4. Correlated a subsequent successful login using Event ID 4624 and KQL `join`.
 5. Documented the findings in a SOC incident report.
 
-## Incident Investigation Report
-The incident investigation report is included as a PDF in this repository.
+[View SOC Incident Investigation Report](Microsoft_Sentinel_SOC_Incident_Report_All_Black.pdf)
 
 ## Skills Demonstrated
 - SIEM investigation
