@@ -1,0 +1,37 @@
+
+let LoginEvents = datatable(
+    TimeGenerated:datetime,
+    Account:string,
+    IPAddress:string,
+    EventID:int
+)
+[
+    datetime(2026-11-17 10:00:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:01:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:02:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:03:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:04:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:05:00), "admin", "192.0.2.10", 4625,
+    datetime(2026-11-17 10:06:00), "admin", "192.0.2.10", 4624,
+    datetime(2026-11-17 10:07:00), "user1", "192.0.2.20", 4624
+];
+let FailedLogins =
+    LoginEvents
+    | where EventID == 4625
+    | summarize
+        FailedAttempts = count(),
+        LastFailure = max(TimeGenerated)
+        by Account, IPAddress
+    | where FailedAttempts >= 5;
+let SuccessfulLogins =
+    LoginEvents
+    | where EventID == 4624
+    | project Account, IPAddress,
+        SuccessTime = TimeGenerated;
+FailedLogins
+| join kind=inner SuccessfulLogins
+    on Account, IPAddress
+| where SuccessTime > LastFailure
+    and SuccessTime <= LastFailure + 10m
+| project Account, IPAddress,
+    FailedAttempts, LastFailure, SuccessTime
