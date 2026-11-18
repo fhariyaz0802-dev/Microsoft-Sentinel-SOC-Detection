@@ -1,5 +1,3 @@
-# Microsoft Sentinel SOC Monitoring & Brute-Force Detection
-
 ## Project Overview
 This cybersecurity portfolio project demonstrates brute-force detection and authentication event correlation using Microsoft Sentinel and Kusto Query Language (KQL) with simulated Windows security events.
 
@@ -42,3 +40,20 @@ All authentication events in this project are simulated. No real security compro
 
 ## Author
 Fhariyazunnisa Abdul
+## Microsoft Sentinel Investigation Screenshots
+
+### 1. First KQL Query
+![First KQL Query](01-Sentinel-First-KQL-Query.png)
+
+### 2. Brute-Force Detection
+![Brute-Force Detection](02-Sentinel-Brute-Force-Detection.png)
+
+### 3. Login Investigation
+![Login Investigation](03-Sentinel-Login-Investigation.png)
+
+### 4. Successful Login Correlation
+![Successful Login Correlation](04-Sentinel-Successful-Login-Detection.png)
+
+## KQL Detection Queries
+- [Brute-Force Detection](KQL-Queries/Brute-Force-Detection.kql)
+- [Successful Login Correlation](KQL-Queries/Successful-Login-Correlation.kql)
